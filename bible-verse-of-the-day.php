@@ -34,16 +34,16 @@ add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 function bible_verse_of_the_day() {
 ?>
 	<script type="text/javascript">var dailyverse = null;</script>
-	<script type="text/javascript" src="http://www.dailyverses.net/scripts/dailyverse_en.js"></script>
+	<script type="text/javascript" src="http://dailyverses.net/scripts/dailyverse_en.js"></script>
 	<script type="text/javascript">
 		if (dailyverse != null) {
 			document.write(dailyverse);
 		}
 		else {
-			document.write('<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://www.dailyverses.net/john/3/16">John 3:16</a></div>')
+			document.write('<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16">John 3:16</a></div>')
 		}
 	</script>
-	<div class="dailyVerses linkToWebsite"><a href="http://www.dailyverses.net" target="_blank">DailyVerses.net</a></div>
+	<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net" target="_blank">DailyVerses.net</a></div>
 
 <?php
 }

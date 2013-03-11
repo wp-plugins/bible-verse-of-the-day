@@ -30,8 +30,8 @@ This section describes how to install the plugin and get it working.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.png. This is what the daily bible verse will look like by default. By changing the css you can change the appearance of the plugin
-2. This screen shot description corresponds to screenshot-2.png. A wordpress site with the plugin in the sidebar.
+1. This is what the daily bible verse will look like by default. By changing the css you can change the appearance of the plugin
+2. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
 

@@ -24,7 +24,7 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. - Widget: There is a widget added 'Bible Verse of the Day', you can drag this onto the sidebar of your site.
    - Template: Place `<?php bible_verse_of_the_day(); ?>` in your templates
-					  
+
 == Frequently Asked Questions ==
 
 

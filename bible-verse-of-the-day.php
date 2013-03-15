@@ -3,7 +3,7 @@
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://www.dailyverses.net/website
 Description: The daily bible verse on your website, from DailyVerses.net
-Version: 1.0
+Version: 1.1
 Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2
@@ -32,20 +32,42 @@ function prefix_add_my_stylesheet() {
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 
 function bible_verse_of_the_day() {
-?>
-	<script type="text/javascript">var dailyverse = null;</script>
-	<script type="text/javascript" src="http://dailyverses.net/scripts/dailyverse_en.js"></script>
-	<script type="text/javascript">
-		if (dailyverse != null) {
-			document.write(dailyverse);
-		}
-		else {
-			document.write('<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16">John 3:16</a></div>')
-		}
-	</script>
-	<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net" target="_blank">DailyVerses.net</a></div>
 
-<?php
+	$bibleVerseOfTheDay_Date = get_option('bibleVerseOfTheDay_Date');
+	$bibleVerseOfTheDay_bibleVerse = get_option('bibleVerseOfTheDay_Verse');
+	$bibleVerseOfTheDay_lastAttempt = get_option('bibleVerseOfTheDay_LastAttempt');
+				
+	$bibleVerseOfTheDay_currentDate = date('Y-m-d');
+
+	if($bibleVerseOfTheDay_Date != $bibleVerseOfTheDay_currentDate && $bibleVerseOfTheDay_lastAttempt < (date('U') - 3600))
+	{
+		//get bible verse
+		$ctx = stream_context_create(array(
+			'http' => array(
+				'timeout' => 2
+				)
+			)
+		);
+		$bibleVerseOfTheDay_newVerse = file_get_contents('http://dailyverses.net/getdailyverse.ashx?language=en&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'], 0, $ctx);
+		
+		update_option('bibleVerseOfTheDay_LastAttempt', date('U'));
+		
+		if($bibleVerseOfTheDay_newVerse != "")
+		{
+			$bibleVerseOfTheDay_bibleVerse = $bibleVerseOfTheDay_newVerse;
+
+			update_option('bibleVerseOfTheDay_Date', $bibleVerseOfTheDay_currentDate);
+			update_option('bibleVerseOfTheDay_Verse', $bibleVerseOfTheDay_bibleVerse);
+		}
+	}
+
+	if($bibleVerseOfTheDay_bibleVerse == "")
+	{
+		$bibleVerseOfTheDay_bibleVerse = '<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16">John 3:16</a></div>';
+	}
+		
+	echo $bibleVerseOfTheDay_bibleVerse;
+	echo '<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net" target="_blank">DailyVerses.net</a></div>';
 }
 
 class DailyVersesWidget extends WP_Widget

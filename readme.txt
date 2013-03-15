@@ -12,9 +12,11 @@ This plugins shows the daily inspiring bible verse from DailyVerses.net.
 
 == Description ==
 
-This plugins shows a daily bible verse. This is the daily verse that's also shown at the website DailyVerses.net. The verses are from the NIV translation.
+This plugins shows a daily bible verse. This is the daily verse that's also shown at the website [DailyVerses.net](http://dailyverses.net). The verses are from the NIV translation.
 
-If the connection to DailyVerses.net for some reason fails, the plugin will show John 3:16.
+It can be used as a widget, so it's easy to install.
+
+If the connection to [DailyVerses.net](http://dailyverses.net) for some reason fails, it will show the previous verse. If there is no previous verse, the plugin will show John 3:16.
 
 == Installation ==
 
@@ -34,6 +36,11 @@ This section describes how to install the plugin and get it working.
 2. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 1.1 =
+* The new verse will now show at midnight depending on your server time, not the time of the server of [DailyVerses.net](http://dailyverses.net)
+* The plugin no longer uses javascript, so it will also work for users with javascript disabled.
+* The plugin now only gets verse once a day from DailyVerses.net so there is no longer a need to get the verse on each page load. This makes the performance even better!
 
 = 1.0 =
 * Initial version

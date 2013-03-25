@@ -3,7 +3,7 @@
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://www.dailyverses.net/website
 Description: The daily bible verse on your website, from DailyVerses.net
-Version: 1.1
+Version: 1.2
 Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2

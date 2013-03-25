@@ -41,20 +41,14 @@ function bible_verse_of_the_day() {
 
 	if($bibleVerseOfTheDay_Date != $bibleVerseOfTheDay_currentDate && $bibleVerseOfTheDay_lastAttempt < (date('U') - 3600))
 	{
-		//get bible verse
-		$ctx = stream_context_create(array(
-			'http' => array(
-				'timeout' => 2
-				)
-			)
-		);
-		$bibleVerseOfTheDay_newVerse = file_get_contents('http://dailyverses.net/getdailyverse.ashx?language=en&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'], 0, $ctx);
-		
+		$url = 'http://dailyverses.net/getdailyverse.ashx?language=en&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'];
+		$result = wp_remote_get($url);
+
 		update_option('bibleVerseOfTheDay_LastAttempt', date('U'));
 		
-		if($bibleVerseOfTheDay_newVerse != "")
+		if(!is_wp_error($result)) 
 		{
-			$bibleVerseOfTheDay_bibleVerse = $bibleVerseOfTheDay_newVerse;
+			$bibleVerseOfTheDay_bibleVerse = $result['body'];
 
 			update_option('bibleVerseOfTheDay_Date', $bibleVerseOfTheDay_currentDate);
 			update_option('bibleVerseOfTheDay_Verse', $bibleVerseOfTheDay_bibleVerse);

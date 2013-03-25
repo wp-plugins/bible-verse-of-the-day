@@ -2,7 +2,7 @@
 Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
 Tags: bible, verse, day, daily, verses, everyday 
-Requires at least: tested on 3.5.1, but should work on older versions
+Requires at least: 2.7.0
 Tested up to: 3.5.1
 Stable tag: trunk
 License: GPLv2 or later
@@ -36,6 +36,9 @@ This section describes how to install the plugin and get it working.
 2. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 1.2 =
+* On some wordpress installations there were security issues when getting the verse from [DailyVerses.net](http://dailyverses.net), these are now solved by using the wordpress functions.
 
 = 1.1 =
 * The new verse will now show at midnight depending on your server time, not the time of the server of [DailyVerses.net](http://dailyverses.net)

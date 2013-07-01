@@ -26,7 +26,7 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. - Widget: There are widgets added 'Bible Verse of the Day' and 'Random Bible Verse', you can drag this onto the sidebar of your site.
    - Replace tags: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse]
-   - Template: Place `<?php echo bible_verse_of_the_day(); ?>` or `<?php echo random_bible_verse(); ?>` in your templates
+   - Template: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your templates
 
 == Frequently Asked Questions ==
 

@@ -3,7 +3,7 @@
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://www.dailyverses.net/website
 Description: The daily bible verse or a random bible verse on your website, from DailyVerses.net
-Version: 1.3
+Version: 1.4
 Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2
@@ -31,38 +31,54 @@ function prefix_add_my_stylesheet() {
 
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 
-function bible_verse_of_the_day($showlink) {
+function bible_verse_of_the_day($showlink, $language) {
 
-	$bibleVerseOfTheDay_Date = get_option('bibleVerseOfTheDay_Date');
-	$bibleVerseOfTheDay_bibleVerse = get_option('bibleVerseOfTheDay_Verse');
-	$bibleVerseOfTheDay_lastAttempt = get_option('bibleVerseOfTheDay_LastAttempt');
+	$languageAdd = '';
+	if($language == 'nl')
+	{
+		$languageAdd = '_nl';
+	}
+	else
+	{
+		$language = 'en';
+	}
+	$bibleVerseOfTheDay_Date = get_option('bibleVerseOfTheDay_Date' . $languageAdd);
+	$bibleVerseOfTheDay_bibleVerse = get_option('bibleVerseOfTheDay_Verse' . $languageAdd);
+	$bibleVerseOfTheDay_lastAttempt = get_option('bibleVerseOfTheDay_LastAttempt' . $languageAdd);
 				
 	$bibleVerseOfTheDay_currentDate = date('Y-m-d');
 
 	if($bibleVerseOfTheDay_Date != $bibleVerseOfTheDay_currentDate && $bibleVerseOfTheDay_lastAttempt < (date('U') - 3600))
 	{
-		$url = 'http://dailyverses.net/getdailyverse.ashx?language=en&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'] . '&type=daily1_3';
+		$url = 'http://dailyverses.net/getdailyverse.ashx?language=' . $language . '&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'] . '&type=daily1_4';
 		$result = wp_remote_get($url);
 
-		update_option('bibleVerseOfTheDay_LastAttempt', date('U'));
+		update_option('bibleVerseOfTheDay_LastAttempt' . $languageAdd, date('U'));
 		
 		if(!is_wp_error($result)) 
 		{
-			$bibleVerseOfTheDay_bibleVerse = $result['body'];
+			$bibleVerseOfTheDay_bibleVerse = str_replace(',', '&#44;', $result['body']);
 
-			update_option('bibleVerseOfTheDay_Date', $bibleVerseOfTheDay_currentDate);
-			update_option('bibleVerseOfTheDay_Verse', $bibleVerseOfTheDay_bibleVerse);
+			update_option('bibleVerseOfTheDay_Date' . $languageAdd, $bibleVerseOfTheDay_currentDate);
+			update_option('bibleVerseOfTheDay_Verse' . $languageAdd, $bibleVerseOfTheDay_bibleVerse);
 		}
 	}
 
 	if($bibleVerseOfTheDay_bibleVerse == "")
 	{
-		$bibleVerseOfTheDay_bibleVerse = '<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16">John 3:16</a></div>';
+		if($language == "nl")
+		{
+			$bibleVerseOfTheDay_bibleVerse = '<div class="dailyVerses bibleText">Want God had de wereld zo lief dat hij zijn enige Zoon heeft gegeven, opdat iedereen die in hem gelooft niet verloren gaat, maar eeuwig leven heeft.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/nl/johannes/3/16" target="_blank">Johannes 3:16</a></div>';
+		}
+		else
+		{
+			$bibleVerseOfTheDay_bibleVerse = '<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16" target="_blank">John 3:16</a></div>';
+		}
 	}
 
     if($showlink == 'true' || $showlink == '1')
 	{
-		$html =  $bibleVerseOfTheDay_bibleVerse . '<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net" target="_blank">DailyVerses.net</a></div>';
+		$html =  $bibleVerseOfTheDay_bibleVerse . '<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net' . ($language == 'en' ? '' : '/' . $language) . '" target="_blank">DailyVerses.net</a></div>';
 	}
 	else
 	{
@@ -72,37 +88,52 @@ function bible_verse_of_the_day($showlink) {
 	return $html;
 }
 
-function random_bible_verse($showlink) {
-
-	$position = rand(0, 100);
-	$randomBibleVerse = get_option('randomBibleVerse_' . $position);
-	$randomBibleVerse_lastAttempt = get_option('randomBibleVerse_LastAttempt');
+function random_bible_verse($showlink, $language) {
+	$languageAdd = '';
+	if($language == 'nl')
+	{
+		$languageAdd = '_nl';
+	}
+	else
+	{
+		$language = 'en';
+	}
+	$position = rand(0, 200);
+	$randomBibleVerse = get_option('randomBibleVerse_' . $position . $languageAdd);
+	$randomBibleVerse_lastAttempt = get_option('randomBibleVerse_LastAttempt' . $languageAdd);
 	
 	if($randomBibleVerse == "" && $randomBibleVerse_lastAttempt < (date('U') - 3600))
 	{
-		$url = 'http://dailyverses.net/getrandomverse.ashx?language=en&position=' . $position . '&url=' . $_SERVER['HTTP_HOST'] . '&type=random1_3';
+		$url = 'http://dailyverses.net/getrandomverse.ashx?language=' . $language . '&position=' . $position . '&url=' . $_SERVER['HTTP_HOST'] . '&type=random1_4';
 		$result = wp_remote_get($url);
 
 		if(!is_wp_error($result)) 
 		{
-			$randomBibleVerse = $result['body'];
+			$randomBibleVerse = str_replace(',', '&#44;', $result['body']);
 
-			update_option('randomBibleVerse_' . $position, $randomBibleVerse);
+			update_option('randomBibleVerse_' . $position . $languageAdd, $randomBibleVerse);
 		}
 		else
 		{
-			update_option('randomBibleVerse_LastAttempt', date('U'));
+			update_option('randomBibleVerse_LastAttempt' . $languageAdd, date('U'));
 		}
 	}
 
 	if($randomBibleVerse == "")
 	{
-		$randomBibleVerse = '<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16">John 3:16</a></div>';
+		if($language == "nl")
+		{
+			$randomBibleVerse = '<div class="dailyVerses bibleText">Want God had de wereld zo lief dat hij zijn enige Zoon heeft gegeven, opdat iedereen die in hem gelooft niet verloren gaat, maar eeuwig leven heeft.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/nl/johannes/3/16" target="_blank">Johannes 3:16</a></div>';
+		}
+		else
+		{
+			$randomBibleVerse = '<div class="dailyVerses bibleText">For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.</div><div class="dailyVerses bibleVerse"><a href="http://dailyverses.net/john/3/16" target="_blank">John 3:16</a></div>';
+		}
 	}
 		
 	if($showlink == 'true' || $showlink == '1')
 	{
-		$html = $randomBibleVerse . '<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net" target="_blank">DailyVerses.net</a></div>';
+		$html = $randomBibleVerse . '<div class="dailyVerses linkToWebsite"><a href="http://dailyverses.net' . ($language == 'en' ? '' : '/' . $language) . '" target="_blank">DailyVerses.net</a></div>';
 	}
 	else
 	{
@@ -114,6 +145,14 @@ function random_bible_verse($showlink) {
 
 add_shortcode('bibleverseoftheday', 'bible_verse_of_the_day'); 
 add_shortcode('randombibleverse', 'random_bible_verse'); 
+add_shortcode('bibleverseoftheday_nl', 'bible_verse_of_the_day_nl'); 
+function bible_verse_of_the_day_nl() {
+	return bible_verse_of_the_day('0', 'nl');
+}
+add_shortcode('randombibleverse_nl', 'random_bible_verse_nl'); 
+function random_bible_verse_nl() {
+	return random_bible_verse('0', 'nl');
+}
 
 class DailyVersesWidget extends WP_Widget
 {
@@ -125,12 +164,14 @@ class DailyVersesWidget extends WP_Widget
  
   function form($instance)
   {
-    $instance = wp_parse_args( (array) $instance, array( 'title' => 'Bible verse of the day', 'showlink' => '1' ) );
+    $instance = wp_parse_args( (array) $instance, array( 'title' => 'Bible verse of the day', 'showlink' => '1', 'language' => 'en' ) );
     $title = $instance['title'];
 	$showlink = $instance['showlink'];
+	$language = $instance['language'];
 	
 ?>
   <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <br /><input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+  <p><select id="<?php echo $this->get_field_id('language'); ?>" name="<?php echo $this->get_field_name('language'); ?>" ?>"><option value="en" <?php _e($language == '' || $language == 'en' ? 'selected' : ''); ?>>English</option><option value="nl" <?php _e($language == 'nl' ? 'selected' : ''); ?>>Dutch (nederlands)</option></select></p>
   <p><input id="<?php echo $this->get_field_id('showlink'); ?>" name="<?php echo $this->get_field_name('showlink'); ?>" type="checkbox" value="1" <?php checked( '1', $showlink ); ?>/><label for="<?php echo $this->get_field_id('showlink'); ?>"><?php _e('&nbsp;Show link to DailyVerses.net (thank you!)'); ?></label></p>
 <?php
   }
@@ -146,6 +187,14 @@ class DailyVersesWidget extends WP_Widget
 	else
 	{
 		$instance['showlink'] = '0';
+	}	
+	if($new_instance['language'] == '')
+	{
+		$instance['language'] = 'en';
+	}
+	else
+	{
+		$instance['language'] = $new_instance['language'];
 	}
     return $instance;
   }
@@ -166,7 +215,13 @@ class DailyVersesWidget extends WP_Widget
 		$showlink = '1';
 	}
 	
-    echo bible_verse_of_the_day($showlink);
+	$language = $instance['language'];
+	if($language == '')
+	{
+		$language = 'en';
+	}
+	
+    echo bible_verse_of_the_day($showlink, $language);
  
     echo $after_widget;
   } 
@@ -182,12 +237,14 @@ class RandomBibleVerseWidget extends WP_Widget
  
   function form($instance)
   {
-    $instance = wp_parse_args( (array) $instance, array( 'title' => 'Random bible verse', 'showlink' => '1' ) );
+    $instance = wp_parse_args( (array) $instance, array( 'title' => 'Random bible verse', 'showlink' => '1', 'language' => 'en' ) );
     $title = $instance['title'];
 	$showlink = $instance['showlink'];
+	$language = $instance['language'];
 	
 ?>
   <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
+  <p><select id="<?php echo $this->get_field_id('language'); ?>" name="<?php echo $this->get_field_name('language'); ?>" ?>"><option value="en" <?php _e($language == '' || $language == 'en' ? 'selected' : ''); ?>>English</option><option value="nl" <?php _e($language == 'nl' ? 'selected' : ''); ?>>Dutch (nederlands)</option></select></p>
   <p><input id="<?php echo $this->get_field_id('showlink'); ?>" name="<?php echo $this->get_field_name('showlink'); ?>" type="checkbox" value="1" <?php checked( '1', $showlink ); ?>/><label for="<?php echo $this->get_field_id('showlink'); ?>"><?php _e('&nbsp;Show link to DailyVerses.net (thank you!)'); ?></label></p>
 <?php
   }
@@ -203,6 +260,14 @@ class RandomBibleVerseWidget extends WP_Widget
 	else
 	{
 		$instance['showlink'] = '0';
+	}
+	if($new_instance['language'] == '')
+	{
+		$instance['language'] = 'en';
+	}
+	else
+	{
+		$instance['language'] = $new_instance['language'];
 	}
     return $instance;
   }
@@ -223,7 +288,13 @@ class RandomBibleVerseWidget extends WP_Widget
 		$showlink = '1';
 	}
 	
-    echo random_bible_verse($showlink);
+	$language = $instance['language'];
+	if($language == '')
+	{
+		$language = 'en';
+	}
+	
+    echo random_bible_verse($showlink, $language);
  
     echo $after_widget;
   }

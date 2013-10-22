@@ -3,7 +3,7 @@ Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
 Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag
 Requires at least: 2.7.0
-Tested up to: 3.5.1
+Tested up to: 3.6.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,23 +20,23 @@ If the connection to [DailyVerses.net](http://dailyverses.net) for some reason f
 
 The plugin also supports dutch bible verses ([DailyVerses.net](http://dailyverses.net/nl):
 
-De bijbelteksten die getoond worden zijn uit de NBV vertaling. De plugin kan als widget gebruikt worden in twee varianten: bijbeltekst van de dag (Bible verse of the day) en willekeurige bijbeltekst (Random bible verse). Je kunt ook de volgende tags gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
+De bijbelteksten die getoond worden zijn uit de NBV vertaling. De plugin kan als widget gebruikt worden in twee varianten: 'Bijbeltekst van de Dag' (Bible verse of the day) en  'Willekeurige Bijbeltekst' (Random bible verse). Je kunt ook de volgende tags gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
 
 == Installation ==
 
 This section describes how to install the plugin and get it working.
 
-1. You can install the plugin by uploading the zip in the plugins section of wordpress, or by adding the files to the folder '/wp-content/plugins/bible-verse-of-the-day' 
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. You can install the plugin by uploading the zip in the plugins section of wordpress, or by adding the files to the folder '/wp-content/plugins/bible-verse-of-the-day'.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. English:
    - Widget: There are widgets added 'Bible Verse of the Day' and 'Random Bible Verse', you can drag this onto the sidebar of your site.
-   - Replace tags: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse]
-   - Template: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your template
+   - Replace tags: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse].
+   - Template: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your template.
    
    Dutch (nederlands):
    - Widget: Er zijn twee widgets toegevoegd 'Bible Verse of the Day' en 'Random Bible Verse', deze kun je op de sidebar van je website plaatsen. Selecteer 'Dutch (nederlands)' bij de configuratie van de widget.
-   - Replace tags: Je kunt de volgende shortcodes gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl]
-   - Template: Plaats `<?php echo bible_verse_of_the_day(0, 'nl'); ?>` of `<?php echo random_bible_verse(0, 'nl'); ?>` in je template
+   - Replace tags: Je kunt de volgende shortcodes gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
+   - Template: Plaats `<?php echo bible_verse_of_the_day(0, 'nl'); ?>` of `<?php echo random_bible_verse(0, 'nl'); ?>` in je template.
       
 == Frequently Asked Questions ==
 

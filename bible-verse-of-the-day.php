@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Bible Verse of the Day
-Plugin URI: http://www.dailyverses.net/website
+Plugin URI: http://wordpress.org/plugins/bible-verse-of-the-day/
 Description: The daily bible verse or a random bible verse on your website, from DailyVerses.net
-Version: 1.4
+Version: 1.5
 Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2
@@ -31,7 +31,7 @@ function prefix_add_my_stylesheet() {
 
 add_action( 'wp_enqueue_scripts', 'prefix_add_my_stylesheet' );
 
-function bible_verse_of_the_day($showlink, $language) {
+function bible_verse_of_the_day($showlink, $language='en') {
 
 	$languageAdd = '';
 	if($language == 'nl')
@@ -88,7 +88,7 @@ function bible_verse_of_the_day($showlink, $language) {
 	return $html;
 }
 
-function random_bible_verse($showlink, $language) {
+function random_bible_verse($showlink, $language='en') {
 	$languageAdd = '';
 	if($language == 'nl')
 	{

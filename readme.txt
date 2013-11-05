@@ -3,7 +3,7 @@ Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
 Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag
 Requires at least: 2.7.0
-Tested up to: 3.6.1
+Tested up to: 3.7.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ It can be used as a widget, so it's easy to install. After installing the plugin
 
 If the connection to [DailyVerses.net](http://dailyverses.net) for some reason fails, it will show the previous verse. If there is no previous verse, the plugin will show John 3:16.
 
-The plugin also supports dutch bible verses ([DailyVerses.net](http://dailyverses.net/nl):
+The plugin also supports dutch bible verses ([DailyVerses.net](http://dailyverses.net/nl)):
 
 De bijbelteksten die getoond worden zijn uit de NBV vertaling. De plugin kan als widget gebruikt worden in twee varianten: 'Bijbeltekst van de Dag' (Bible verse of the day) en  'Willekeurige Bijbeltekst' (Random bible verse). Je kunt ook de volgende tags gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
 
@@ -48,6 +48,10 @@ This section describes how to install the plugin and get it working.
 3. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 1.5 =
+* Fixed missing argument warning
+* Tested with Wordpress version 3.7.1
 
 = 1.4 =
 * Added support for the dutch language

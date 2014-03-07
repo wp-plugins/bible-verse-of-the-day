@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
-Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag
+Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag, random, willekeurige, bibelverse, bibel, zufalls, bibelvers, tages, versiculo, verso, biblia, azar, dia
 Requires at least: 2.7.0
-Tested up to: 3.8.0
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,9 +18,22 @@ It can be used as a widget, so it's easy to install. After installing the plugin
 
 If the connection to [DailyVerses.net](http://dailyverses.net) for some reason fails, it will show the previous verse. If there is no previous verse, the plugin will show John 3:16.
 
-The plugin also supports dutch bible verses ([DailyVerses.net](http://dailyverses.net/nl)):
+The plugin also supports ([Dutch](http://dailyverses.net/nl)), ([Spanish](http://dailyverses.net/es)) and ([German](http://dailyverses.net/de)) bible verses:
 
-De bijbelteksten die getoond worden zijn uit de NBV vertaling. De plugin kan als widget gebruikt worden in twee varianten: 'Bijbeltekst van de Dag' (Bible verse of the day) en  'Willekeurige Bijbeltekst' (Random bible verse). Je kunt ook de volgende tags gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
+Nederlands (Dutch):
+Bible translation: NBV.
+Widget: 'Bijbeltekst van de Dag' (Bible verse of the day) and 'Willekeurige Bijbeltekst' (Random bible verse).
+Tags: [bibleverseoftheday_nl] and [randombibleverse_nl]
+
+Spanish (Español):
+Bible translation: NVI.
+Widget: 'Versículo del día' (Bible verse of the day) and 'Versículo de la Biblia al azar' (Random bible verse).
+Tags: [bibleverseoftheday_es] and [randombibleverse_es]
+
+German (Deutsch):
+Bible translation: Luther 1984.
+Widget: 'Bibelvers des Tages' (Bible verse of the day) and 'Zufalls Bibelvers' (Random bible verse).
+Tags: [bibleverseoftheday_de] and [randombibleverse_de]
 
 == Installation ==
 
@@ -33,11 +46,21 @@ This section describes how to install the plugin and get it working.
    - Replace tags: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse].
    - Template: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your template.
    
-   Dutch (nederlands):
+   Dutch (Nederlands):
    - Widget: Er zijn twee widgets toegevoegd 'Bible Verse of the Day' en 'Random Bible Verse', deze kun je op de sidebar van je website plaatsen. Selecteer 'Dutch (nederlands)' bij de configuratie van de widget.
    - Replace tags: Je kunt de volgende shortcodes gebruiken: [bibleverseoftheday_nl] and [randombibleverse_nl].
    - Template: Plaats `<?php echo bible_verse_of_the_day(0, 'nl'); ?>` of `<?php echo random_bible_verse(0, 'nl'); ?>` in je template.
-      
+
+   Spanish (Español):
+   - Widget: 'Bible Verse of the Day' and 'Random Bible Verse'. Select 'Spanish (español)' at the configuration of the widget.
+   - Replace tags: [bibleverseoftheday_es] and [randombibleverse_es].
+   - Template: Place `<?php echo bible_verse_of_the_day(0, 'es'); ?>` or `<?php echo random_bible_verse(0, 'es'); ?>` in your template.
+
+   German (Deutsch):
+   - Widget: 'Bible Verse of the Day' and 'Random Bible Verse'. Select 'German (deutsch)' at the configuration of the widget.
+   - Replace tags: [bibleverseoftheday_de] and [randombibleverse_de].
+   - Template: Place `<?php echo bible_verse_of_the_day(0, 'de'); ?>` or `<?php echo random_bible_verse(0, 'de'); ?>` in your template.
+   
 == Frequently Asked Questions ==
 
 
@@ -48,6 +71,10 @@ This section describes how to install the plugin and get it working.
 3. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 1.6 =
+* Added German and Spanish
+* Tested with Wordpress version 3.8.1
 
 = 1.5 =
 * Fixed missing argument warning

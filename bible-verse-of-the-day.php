@@ -1,4 +1,4 @@
-﻿<?php 
+﻿<?php
 /*
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://wordpress.org/plugins/bible-verse-of-the-day/

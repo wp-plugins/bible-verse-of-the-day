@@ -1,4 +1,4 @@
-﻿<?php
+﻿<?php 
 /*
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://wordpress.org/plugins/bible-verse-of-the-day/
@@ -8,7 +8,7 @@ Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2
 
-  Copyright 2013  DailyVerses.net  (email : mail@dailyverses.net)
+  Copyright 2014  DailyVerses.net  (email : mail@dailyverses.net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 

@@ -72,6 +72,10 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 1.7 =
+* Fixed deprecated function warning
+* Tested with Wordpress version 4.0.1
+
 = 1.6 =
 * Added German and Spanish
 * Tested with Wordpress version 3.8.1

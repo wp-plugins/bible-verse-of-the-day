@@ -1,9 +1,9 @@
-﻿<?php
+<?php
 /*
 Plugin Name: Bible Verse of the Day
 Plugin URI: http://wordpress.org/plugins/bible-verse-of-the-day/
 Description: The daily bible verse or a random bible verse on your website, from DailyVerses.net
-Version: 1.8
+Version: 1.9
 Author: DailyVerses.net
 Author URI: http://www.dailyverses.net
 License: GPL2
@@ -59,7 +59,7 @@ function bible_verse_of_the_day($showlink, $language='en') {
 
 	if($bibleVerseOfTheDay_Date != $bibleVerseOfTheDay_currentDate && $bibleVerseOfTheDay_lastAttempt < (date('U') - 3600))
 	{
-		$url = 'http://dailyverses.net/getdailyverse.ashx?language=' . $language . '&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'] . '&type=daily1_8';
+		$url = 'http://dailyverses.net/getdailyverse.ashx?language=' . $language . '&date=' . $bibleVerseOfTheDay_currentDate . '&url=' . $_SERVER['HTTP_HOST'] . '&type=daily1_9';
 		$result = wp_remote_get($url);
 
 		update_option('bibleVerseOfTheDay_LastAttempt' . $languageAdd, date('U'));
@@ -129,7 +129,7 @@ function random_bible_verse($showlink, $language='en') {
 	
 	if($randomBibleVerse == "" && $randomBibleVerse_lastAttempt < (date('U') - 3600))
 	{
-		$url = 'http://dailyverses.net/getrandomverse.ashx?language=' . $language . '&position=' . $position . '&url=' . $_SERVER['HTTP_HOST'] . '&type=random1_8';
+		$url = 'http://dailyverses.net/getrandomverse.ashx?language=' . $language . '&position=' . $position . '&url=' . $_SERVER['HTTP_HOST'] . '&type=random1_9';
 		$result = wp_remote_get($url);
 
 		if(!is_wp_error($result)) 

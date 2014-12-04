@@ -72,6 +72,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 1.9 =
+* Fixed (new attempt) error on some wordpress installations: Cannot modify header information - headers already sent by, removed BOM headers from file
+
 = 1.8 =
 * Fixed error on some wordpress installations: Cannot modify header information - headers already sent by
 

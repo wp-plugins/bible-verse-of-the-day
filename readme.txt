@@ -72,6 +72,9 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 1.8 =
+* Fixed error on some wordpress installations: Cannot modify header information - headers already sent by
+
 = 1.7 =
 * Fixed deprecated function warning
 * Tested with Wordpress version 4.0.1

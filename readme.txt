@@ -112,5 +112,3 @@ This section describes how to install the plugin and get it working.
 * Initial version
 
 == Upgrade Notice ==
-
-== A brief Markdown Example ==

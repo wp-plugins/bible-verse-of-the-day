@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
-Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag, random, willekeurige, bibelverse, bibel, zufalls, bibelvers, tages, versiculo, verso, biblia, azar, dia
+Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag, random, willekeurige, bibelverse, bibel, zufalls, bibelvers, tages, versiculo, verso, biblia, azar, dia, nbv, nvi, niv, kjv, lut
 Requires at least: 2.7.0
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,9 +12,9 @@ This plugins shows the daily inspiring bible verse or a random bible verse from 
 
 == Description ==
 
-This plugins shows a daily bible verse or a random bible verse from [DailyVerses.net](http://dailyverses.net). The verses are from the NIV translation.
+This plugins shows a daily bible verse or a random bible verse from [DailyVerses.net](http://dailyverses.net). The verses are from the NIV or KJV translation.
 
-It can be used as a widget, so it's easy to install. After installing the plugin you will have two widgets: 'Bible verse of the day' and 'Random bible verse'. You can also use the following tags: [bibleverseoftheday] and [randombibleverse].
+It can be used as a widget, so it's easy to install. After installing the plugin you will have two widgets: 'Bible verse of the day' and 'Random bible verse'. You can also use the following tags: [bibleverseoftheday], [bibleverseoftheday_kjv] and [randombibleverse], [randombibleverse_kjv].
 
 If the connection to [DailyVerses.net](http://dailyverses.net) for some reason fails, it will show the previous verse. If there is no previous verse, the plugin will show John 3:16.
 
@@ -43,8 +43,10 @@ This section describes how to install the plugin and get it working.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. English:
    - Widget: There are widgets added 'Bible Verse of the Day' and 'Random Bible Verse', you can drag this onto the sidebar of your site.
-   - Replace tags: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse].
-   - Template: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your template.
+   - Replace tags NIV: You can use the following shortcodes: [bibleverseoftheday] and [randombibleverse].
+   - Replace tags KJV: You can use the following shortcodes: [bibleverseoftheday_kjv] and [randombibleverse_kjv].
+   - Template KJV: Place `<?php echo bible_verse_of_the_day(0); ?>` or `<?php echo random_bible_verse(0); ?>` in your template.
+   - Template KJV: Place `<?php echo bible_verse_of_the_day(0, 'kjv'); ?>` or `<?php echo random_bible_verse(0, 'kjv'); ?>` in your template.
    
    Dutch (Nederlands):
    - Widget: Er zijn twee widgets toegevoegd 'Bible Verse of the Day' en 'Random Bible Verse', deze kun je op de sidebar van je website plaatsen. Selecteer 'Dutch (nederlands)' bij de configuratie van de widget.
@@ -71,6 +73,10 @@ This section describes how to install the plugin and get it working.
 3. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 2.0 =
+* Added KJV (King James Version)
+* Tested with Wordpress version 4.1.1
 
 = 1.9 =
 * Fixed (new attempt) error on some wordpress installations: Cannot modify header information - headers already sent by, removed BOM headers from file

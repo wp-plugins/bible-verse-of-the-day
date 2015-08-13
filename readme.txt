@@ -3,7 +3,7 @@ Contributors: dailyverses
 Donate link: http://www.dailyverses.net/
 Tags: bible, verse, day, daily, verses, everyday, widget, bijbel, tekst, bijbeltekst, dagelijks, dag, random, willekeurige, bibelverse, bibel, zufalls, bibelvers, tages, versiculo, verso, biblia, azar, dia, nbv, nvi, niv, kjv, lut
 Requires at least: 2.7.0
-Tested up to: 4.1.1
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -73,6 +73,9 @@ This section describes how to install the plugin and get it working.
 3. A wordpress site with the plugin in the sidebar.
 
 == Changelog ==
+
+= 2.1 =
+* Improved widget constructor for wordpress 4.3
 
 = 2.0 =
 * Added KJV (King James Version)
